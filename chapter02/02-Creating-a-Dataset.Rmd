@@ -1,0 +1,47 @@
+---
+title: "Creating a dataset"
+output: html_notebook
+---
+## Data structures
+R has a wide variety of objects for holding data, including _scalars_, _vectors_, _matrices_, _arrays_, _data frames_, and _lists_.
+
+### Vectors
+
+- Vectors are one-dimensional arrays that can hold numeric data, character data, or logical data.
+
+- The combine function _c()_ is used to form vector.
+
+- The data in a vector must be of only one type or mode (numeric, character or logical). 
+
+__Numeric vector__
+```{r}
+a <- c(1, 2, 5, 3, 6, -2, 4)
+a
+```
+__Character vector__
+```{r}
+b <- c("one", "two", "three")
+b
+```
+
+__Logical vector__
+```{r}
+c <- c(TRUE, TRUE, TRUE, FALSE, TRUE, FALSE)
+c
+```
+Unlike programming languages such as C++, Java, and Python, R position indices start with 1 rather than 0.
+
+```{r}
+a <- c("k", "j", "h", "a", "c", "m")
+```
+
+```{r}
+a[3]
+```
+```{r}
+a[c(1, 3, 5)]
+```
+```{r}
+a[2:6]
+```
+The colon operator __:__ used in the last statement generates a sequence of numbers. For example, _a <- c(2:6)_ is equivalent to _a <-(2, 3, 4, 5, 6)_.
