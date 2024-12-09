@@ -45,3 +45,63 @@ a[c(1, 3, 5)]
 a[2:6]
 ```
 The colon operator __:__ used in the last statement generates a sequence of numbers. For example, _a <- c(2:6)_ is equivalent to _a <-(2, 3, 4, 5, 6)_.
+
+
+### Matrices
+
+- A _matrix_ is a two-dimensional array in which each element has the same mode (_numeric_, _character_, or _logical_).
+
+- Matrices are created with the _matrix_ function.
+
+- The general format is: 
+```
+mymatrix <- matrix(vector, nrow=number_of_rows, ncol=number_of_columns, byrow=logical_value, dimnames=list(char_vector_rownames, char_vector_colnames))
+```
+
+* _vector_: Contains the elements for the matrix.
+* _nrow_ and _ncol_: Specify the row and columns dimensions.
+* _dimnames_: Contains optional row and column labels stored in character vectors.
+* _byrow_: Indicates whether the matrix should be filled by row (_byrow=TRUE_) or by column (byrow=FALSE). The default is by column.
+
+__Creating matrices__
+
+_Creates a 5 X 4 matrix_
+```{r}
+y <- matrix(1:20, nrow=5, ncol=4)
+y
+```
+
+
+```{r}
+cells <- c(1, 26, 24, 68)
+rnames <- c("R1" , "R2")
+cnames <- c("C1", "c2")
+```
+
+_2 X 2 matrix filled by rows_
+```{r}
+mymatrix <- matrix(cells, nrow=2, ncol=2, byrow=TRUE, dimnames=list(rnames, cnames))
+mymatrix
+```
+__Using matrix subscripts__
+```{r}
+x <- matrix(1:10, nrow=2)
+x
+```
+Select the elements in the second row.
+```{r}
+x[2,]
+```
+Select the elements in the second column.
+```{r}
+x[,2]
+```
+Select the element in the first row and fourth column
+```{r}
+x[1,4]
+```
+Select the elements in the first row and the fourth and fifth columns.
+```{r}
+x[1,c(4, 5)]
+```
+

@@ -1855,11 +1855,148 @@ position indices start with 1 rather than 0.</p>
 <p>The colon operator <strong>:</strong> used in the last statement
 generates a sequence of numbers. For example, <em>a &lt;- c(2:6)</em> is
 equivalent to <em>a &lt;-(2, 3, 4, 5, 6)</em>.</p>
+</div>
+<div id="matrices" class="section level3">
+<h3>Matrices</h3>
+<ul>
+<li><p>A <em>matrix</em> is a two-dimensional array in which each
+element has the same mode (<em>numeric</em>, <em>character</em>, or
+<em>logical</em>).</p></li>
+<li><p>Matrices are created with the <em>matrix</em> function.</p></li>
+<li><p>The general format is:</p></li>
+</ul>
+<pre><code>mymatrix &lt;- matrix(vector, nrow=number_of_rows, ncol=number_of_columns, byrow=logical_value, dimnames=list(char_vector_rownames, char_vector_colnames))</code></pre>
+<ul>
+<li><em>vector</em>: Contains the elements for the matrix.</li>
+<li><em>nrow</em> and <em>ncol</em>: Specify the row and columns
+dimensions.</li>
+<li><em>dimnames</em>: Contains optional row and column labels stored in
+character vectors.</li>
+<li><em>byrow</em>: Indicates whether the matrix should be filled by row
+(<em>byrow=TRUE</em>) or by column (byrow=FALSE). The default is by
+column.</li>
+</ul>
+<p><strong>Creating matrices</strong></p>
+<p><em>Creates a 5 X 4 matrix</em></p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVlU0E4TFNCdFlYUnlhWGdvTVRveU1Dd2dibkp2ZHowMUxDQnVZMjlzUFRRcFhHNTVYRzVnWUdBaWZRPT0gLS0+XG5cbmBgYHJcbnkgPC0gbWF0cml4KDE6MjAsIG5yb3c9NSwgbmNvbD00KVxueVxuYGBgXG5cbjwhLS0gcm5iLXNvdXJjZS1lbmQgLS0+XG4ifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueSA8LSBtYXRyaXgoMToyMCwgbnJvdz01LCBuY29sPTQpXG55XG5gYGAifQ== -->
+<pre class="r"><code>y &lt;- matrix(1:20, nrow=5, ncol=4)
+y</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl0gWywzXSBbLDRdXG5bMSxdICAgIDEgICAgNiAgIDExICAgMTZcblsyLF0gICAgMiAgICA3ICAgMTIgICAxN1xuWzMsXSAgICAzICAgIDggICAxMyAgIDE4XG5bNCxdICAgIDQgICAgOSAgIDE0ICAgMTlcbls1LF0gICAgNSAgIDEwICAgMTUgICAyMFxuIn0= -->
+<pre><code>     [,1] [,2] [,3] [,4]
+[1,]    1    6   11   16
+[2,]    2    7   12   17
+[3,]    3    8   13   18
+[4,]    4    9   14   19
+[5,]    5   10   15   20</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVZMlZzYkhNZ1BDMGdZeWd4TENBeU5pd2dNalFzSURZNEtWeHVjbTVoYldWeklEd3RJR01vWENKU01Wd2lJQ3dnWENKU01sd2lLVnh1WTI1aGJXVnpJRHd0SUdNb1hDSkRNVndpTENCY0ltTXlYQ0lwWEc1Z1lHQWlmUT09IC0tPlxuXG5gYGByXG5jZWxscyA8LSBjKDEsIDI2LCAyNCwgNjgpXG5ybmFtZXMgPC0gYyhcIlIxXCIgLCBcIlIyXCIpXG5jbmFtZXMgPC0gYyhcIkMxXCIsIFwiYzJcIilcbmBgYFxuXG48IS0tIHJuYi1zb3VyY2UtZW5kIC0tPlxuIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY2VsbHMgPC0gYygxLCAyNiwgMjQsIDY4KVxucm5hbWVzIDwtIGMoXCJSMVwiICwgXCJSMlwiKVxuY25hbWVzIDwtIGMoXCJDMVwiLCBcImMyXCIpXG5gYGAifQ== -->
+<pre class="r"><code>cells &lt;- c(1, 26, 24, 68)
+rnames &lt;- c(&quot;R1&quot; , &quot;R2&quot;)
+cnames &lt;- c(&quot;C1&quot;, &quot;c2&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p><em>2 X 2 matrix filled by rows</em></p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHViWGx0WVhSeWFYZ2dQQzBnYldGMGNtbDRLR05sYkd4ekxDQnVjbTkzUFRJc0lHNWpiMnc5TWl3Z1lubHliM2M5VkZKVlJTd2daR2x0Ym1GdFpYTTliR2x6ZENoeWJtRnRaWE1zSUdOdVlXMWxjeWtwWEc1dGVXMWhkSEpwZUZ4dVlHQmdJbjA9IC0tPlxuXG5gYGByXG5teW1hdHJpeCA8LSBtYXRyaXgoY2VsbHMsIG5yb3c9MiwgbmNvbD0yLCBieXJvdz1UUlVFLCBkaW1uYW1lcz1saXN0KHJuYW1lcywgY25hbWVzKSlcbm15bWF0cml4XG5gYGBcblxuPCEtLSBybmItc291cmNlLWVuZCAtLT5cbiJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXltYXRyaXggPC0gbWF0cml4KGNlbGxzLCBucm93PTIsIG5jb2w9MiwgYnlyb3c9VFJVRSwgZGltbmFtZXM9bGlzdChybmFtZXMsIGNuYW1lcykpXG5teW1hdHJpeFxuYGBgIn0= -->
+<pre class="r"><code>mymatrix &lt;- matrix(cells, nrow=2, ncol=2, byrow=TRUE, dimnames=list(rnames, cnames))
+mymatrix</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgQzEgYzJcblIxICAxIDI2XG5SMiAyNCA2OFxuIn0= -->
+<pre><code>   C1 c2
+R1  1 26
+R2 24 68</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p><strong>Using matrix subscripts</strong></p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVlQ0E4TFNCdFlYUnlhWGdvTVRveE1Dd2dibkp2ZHoweUtWeHVlRnh1WUdCZ0luMD0gLS0+XG5cbmBgYHJcbnggPC0gbWF0cml4KDE6MTAsIG5yb3c9MilcbnhcbmBgYFxuXG48IS0tIHJuYi1zb3VyY2UtZW5kIC0tPlxuIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueCA8LSBtYXRyaXgoMToxMCwgbnJvdz0yKVxueFxuYGBgIn0= -->
+<pre class="r"><code>x &lt;- matrix(1:10, nrow=2)
+x</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiICAgICBbLDFdIFssMl0gWywzXSBbLDRdIFssNV1cblsxLF0gICAgMSAgICAzICAgIDUgICAgNyAgICA5XG5bMixdICAgIDIgICAgNCAgICA2ICAgIDggICAxMFxuIn0= -->
+<pre><code>     [,1] [,2] [,3] [,4] [,5]
+[1,]    1    3    5    7    9
+[2,]    2    4    6    8   10</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Select the elements in the second row.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVlRnN5TEYxY2JtQmdZQ0o5IC0tPlxuXG5gYGByXG54WzIsXVxuYGBgXG5cbjwhLS0gcm5iLXNvdXJjZS1lbmQgLS0+XG4ifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueFsyLF1cbmBgYCJ9 -->
+<pre class="r"><code>x[2,]</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdICAyICA0ICA2ICA4IDEwXG4ifQ== -->
+<pre><code>[1]  2  4  6  8 10</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Select the elements in the second column.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVlRnNzTWwxY2JtQmdZQ0o5IC0tPlxuXG5gYGByXG54WywyXVxuYGBgXG5cbjwhLS0gcm5iLXNvdXJjZS1lbmQgLS0+XG4ifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueFssMl1cbmBgYCJ9 -->
+<pre class="r"><code>x[,2]</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDMgNFxuIn0= -->
+<pre><code>[1] 3 4</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Select the element in the first row and fourth column</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVlRnN4TERSZFhHNWdZR0FpZlE9PSAtLT5cblxuYGBgclxueFsxLDRdXG5gYGBcblxuPCEtLSBybmItc291cmNlLWVuZCAtLT5cbiJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueFsxLDRdXG5gYGAifQ== -->
+<pre class="r"><code>x[1,4]</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDdcbiJ9 -->
+<pre><code>[1] 7</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Select the elements in the first row and the fourth and fifth
+columns.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG48IS0tIHJuYi1zb3VyY2UtYmVnaW4gZXlKa1lYUmhJam9pWUdCZ2NseHVlRnN4TEdNb05Dd2dOU2xkWEc1Z1lHQWlmUT09IC0tPlxuXG5gYGByXG54WzEsYyg0LCA1KV1cbmBgYFxuXG48IS0tIHJuYi1zb3VyY2UtZW5kIC0tPlxuIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxueFsxLGMoNCwgNSldXG5gYGAifQ== -->
+<pre class="r"><code>x[1,c(4, 5)]</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDcgOVxuIn0= -->
+<pre><code>[1] 7 9</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIkNyZWF0aW5nIGEgZGF0YXNldCINCm91dHB1dDogaHRtbF9ub3RlYm9vaw0KLS0tDQojIyBEYXRhIHN0cnVjdHVyZXMNClIgaGFzIGEgd2lkZSB2YXJpZXR5IG9mIG9iamVjdHMgZm9yIGhvbGRpbmcgZGF0YSwgaW5jbHVkaW5nIF9zY2FsYXJzXywgX3ZlY3RvcnNfLCBfbWF0cmljZXNfLCBfYXJyYXlzXywgX2RhdGEgZnJhbWVzXywgYW5kIF9saXN0c18uDQoNCiMjIyBWZWN0b3JzDQoNCi0gVmVjdG9ycyBhcmUgb25lLWRpbWVuc2lvbmFsIGFycmF5cyB0aGF0IGNhbiBob2xkIG51bWVyaWMgZGF0YSwgY2hhcmFjdGVyIGRhdGEsIG9yIGxvZ2ljYWwgZGF0YS4NCg0KLSBUaGUgY29tYmluZSBmdW5jdGlvbiBfYygpXyBpcyB1c2VkIHRvIGZvcm0gdmVjdG9yLg0KDQotIFRoZSBkYXRhIGluIGEgdmVjdG9yIG11c3QgYmUgb2Ygb25seSBvbmUgdHlwZSBvciBtb2RlIChudW1lcmljLCBjaGFyYWN0ZXIgb3IgbG9naWNhbCkuIA0KDQpfX051bWVyaWMgdmVjdG9yX18NCmBgYHtyfQ0KYSA8LSBjKDEsIDIsIDUsIDMsIDYsIC0yLCA0KQ0KYQ0KYGBgDQpfX0NoYXJhY3RlciB2ZWN0b3JfXw0KYGBge3J9DQpiIDwtIGMoIm9uZSIsICJ0d28iLCAidGhyZWUiKQ0KYg0KYGBgDQoNCl9fTG9naWNhbCB2ZWN0b3JfXw0KYGBge3J9DQpjIDwtIGMoVFJVRSwgVFJVRSwgVFJVRSwgRkFMU0UsIFRSVUUsIEZBTFNFKQ0KYw0KYGBgDQpVbmxpa2UgcHJvZ3JhbW1pbmcgbGFuZ3VhZ2VzIHN1Y2ggYXMgQysrLCBKYXZhLCBhbmQgUHl0aG9uLCBSIHBvc2l0aW9uIGluZGljZXMgc3RhcnQgd2l0aCAxIHJhdGhlciB0aGFuIDAuDQoNCmBgYHtyfQ0KYSA8LSBjKCJrIiwgImoiLCAiaCIsICJhIiwgImMiLCAibSIpDQpgYGANCg0KYGBge3J9DQphWzNdDQpgYGANCmBgYHtyfQ0KYVtjKDEsIDMsIDUpXQ0KYGBgDQpgYGB7cn0NCmFbMjo2XQ0KYGBgDQpUaGUgY29sb24gb3BlcmF0b3IgX186X18gdXNlZCBpbiB0aGUgbGFzdCBzdGF0ZW1lbnQgZ2VuZXJhdGVzIGEgc2VxdWVuY2Ugb2YgbnVtYmVycy4gRm9yIGV4YW1wbGUsIF9hIDwtIGMoMjo2KV8gaXMgZXF1aXZhbGVudCB0byBfYSA8LSgyLCAzLCA0LCA1LCA2KV8uDQo=</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIkNyZWF0aW5nIGEgZGF0YXNldCINCm91dHB1dDogaHRtbF9ub3RlYm9vaw0KLS0tDQojIyBEYXRhIHN0cnVjdHVyZXMNClIgaGFzIGEgd2lkZSB2YXJpZXR5IG9mIG9iamVjdHMgZm9yIGhvbGRpbmcgZGF0YSwgaW5jbHVkaW5nIF9zY2FsYXJzXywgX3ZlY3RvcnNfLCBfbWF0cmljZXNfLCBfYXJyYXlzXywgX2RhdGEgZnJhbWVzXywgYW5kIF9saXN0c18uDQoNCiMjIyBWZWN0b3JzDQoNCi0gVmVjdG9ycyBhcmUgb25lLWRpbWVuc2lvbmFsIGFycmF5cyB0aGF0IGNhbiBob2xkIG51bWVyaWMgZGF0YSwgY2hhcmFjdGVyIGRhdGEsIG9yIGxvZ2ljYWwgZGF0YS4NCg0KLSBUaGUgY29tYmluZSBmdW5jdGlvbiBfYygpXyBpcyB1c2VkIHRvIGZvcm0gdmVjdG9yLg0KDQotIFRoZSBkYXRhIGluIGEgdmVjdG9yIG11c3QgYmUgb2Ygb25seSBvbmUgdHlwZSBvciBtb2RlIChudW1lcmljLCBjaGFyYWN0ZXIgb3IgbG9naWNhbCkuIA0KDQpfX051bWVyaWMgdmVjdG9yX18NCmBgYHtyfQ0KYSA8LSBjKDEsIDIsIDUsIDMsIDYsIC0yLCA0KQ0KYQ0KYGBgDQpfX0NoYXJhY3RlciB2ZWN0b3JfXw0KYGBge3J9DQpiIDwtIGMoIm9uZSIsICJ0d28iLCAidGhyZWUiKQ0KYg0KYGBgDQoNCl9fTG9naWNhbCB2ZWN0b3JfXw0KYGBge3J9DQpjIDwtIGMoVFJVRSwgVFJVRSwgVFJVRSwgRkFMU0UsIFRSVUUsIEZBTFNFKQ0KYw0KYGBgDQpVbmxpa2UgcHJvZ3JhbW1pbmcgbGFuZ3VhZ2VzIHN1Y2ggYXMgQysrLCBKYXZhLCBhbmQgUHl0aG9uLCBSIHBvc2l0aW9uIGluZGljZXMgc3RhcnQgd2l0aCAxIHJhdGhlciB0aGFuIDAuDQoNCmBgYHtyfQ0KYSA8LSBjKCJrIiwgImoiLCAiaCIsICJhIiwgImMiLCAibSIpDQpgYGANCg0KYGBge3J9DQphWzNdDQpgYGANCmBgYHtyfQ0KYVtjKDEsIDMsIDUpXQ0KYGBgDQpgYGB7cn0NCmFbMjo2XQ0KYGBgDQpUaGUgY29sb24gb3BlcmF0b3IgX186X18gdXNlZCBpbiB0aGUgbGFzdCBzdGF0ZW1lbnQgZ2VuZXJhdGVzIGEgc2VxdWVuY2Ugb2YgbnVtYmVycy4gRm9yIGV4YW1wbGUsIF9hIDwtIGMoMjo2KV8gaXMgZXF1aXZhbGVudCB0byBfYSA8LSgyLCAzLCA0LCA1LCA2KV8uDQoNCg0KIyMjIE1hdHJpY2VzDQoNCi0gQSBfbWF0cml4XyBpcyBhIHR3by1kaW1lbnNpb25hbCBhcnJheSBpbiB3aGljaCBlYWNoIGVsZW1lbnQgaGFzIHRoZSBzYW1lIG1vZGUgKF9udW1lcmljXywgX2NoYXJhY3Rlcl8sIG9yIF9sb2dpY2FsXykuDQoNCi0gTWF0cmljZXMgYXJlIGNyZWF0ZWQgd2l0aCB0aGUgX21hdHJpeF8gZnVuY3Rpb24uDQoNCi0gVGhlIGdlbmVyYWwgZm9ybWF0IGlzOiANCmBgYA0KbXltYXRyaXggPC0gbWF0cml4KHZlY3RvciwgbnJvdz1udW1iZXJfb2Zfcm93cywgbmNvbD1udW1iZXJfb2ZfY29sdW1ucywgYnlyb3c9bG9naWNhbF92YWx1ZSwgZGltbmFtZXM9bGlzdChjaGFyX3ZlY3Rvcl9yb3duYW1lcywgY2hhcl92ZWN0b3JfY29sbmFtZXMpKQ0KYGBgDQoNCiogX3ZlY3Rvcl86IENvbnRhaW5zIHRoZSBlbGVtZW50cyBmb3IgdGhlIG1hdHJpeC4NCiogX25yb3dfIGFuZCBfbmNvbF86IFNwZWNpZnkgdGhlIHJvdyBhbmQgY29sdW1ucyBkaW1lbnNpb25zLg0KKiBfZGltbmFtZXNfOiBDb250YWlucyBvcHRpb25hbCByb3cgYW5kIGNvbHVtbiBsYWJlbHMgc3RvcmVkIGluIGNoYXJhY3RlciB2ZWN0b3JzLg0KKiBfYnlyb3dfOiBJbmRpY2F0ZXMgd2hldGhlciB0aGUgbWF0cml4IHNob3VsZCBiZSBmaWxsZWQgYnkgcm93IChfYnlyb3c9VFJVRV8pIG9yIGJ5IGNvbHVtbiAoYnlyb3c9RkFMU0UpLiBUaGUgZGVmYXVsdCBpcyBieSBjb2x1bW4uDQoNCl9fQ3JlYXRpbmcgbWF0cmljZXNfXw0KDQpfQ3JlYXRlcyBhIDUgWCA0IG1hdHJpeF8NCmBgYHtyfQ0KeSA8LSBtYXRyaXgoMToyMCwgbnJvdz01LCBuY29sPTQpDQp5DQpgYGANCg0KDQpgYGB7cn0NCmNlbGxzIDwtIGMoMSwgMjYsIDI0LCA2OCkNCnJuYW1lcyA8LSBjKCJSMSIgLCAiUjIiKQ0KY25hbWVzIDwtIGMoIkMxIiwgImMyIikNCmBgYA0KDQpfMiBYIDIgbWF0cml4IGZpbGxlZCBieSByb3dzXw0KYGBge3J9DQpteW1hdHJpeCA8LSBtYXRyaXgoY2VsbHMsIG5yb3c9MiwgbmNvbD0yLCBieXJvdz1UUlVFLCBkaW1uYW1lcz1saXN0KHJuYW1lcywgY25hbWVzKSkNCm15bWF0cml4DQpgYGANCl9fVXNpbmcgbWF0cml4IHN1YnNjcmlwdHNfXw0KYGBge3J9DQp4IDwtIG1hdHJpeCgxOjEwLCBucm93PTIpDQp4DQpgYGANClNlbGVjdCB0aGUgZWxlbWVudHMgaW4gdGhlIHNlY29uZCByb3cuDQpgYGB7cn0NCnhbMixdDQpgYGANClNlbGVjdCB0aGUgZWxlbWVudHMgaW4gdGhlIHNlY29uZCBjb2x1bW4uDQpgYGB7cn0NCnhbLDJdDQpgYGANClNlbGVjdCB0aGUgZWxlbWVudCBpbiB0aGUgZmlyc3Qgcm93IGFuZCBmb3VydGggY29sdW1uDQpgYGB7cn0NCnhbMSw0XQ0KYGBgDQpTZWxlY3QgdGhlIGVsZW1lbnRzIGluIHRoZSBmaXJzdCByb3cgYW5kIHRoZSBmb3VydGggYW5kIGZpZnRoIGNvbHVtbnMuDQpgYGB7cn0NCnhbMSxjKDQsIDUpXQ0KYGBgDQoNCg==</div>
 
 
 
